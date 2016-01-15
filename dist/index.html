@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовое задание 12.01.2016</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+<div id="view"></div>
+
+<script src="js/libs.min.js"></script>
+<script src="js/main.min.js"></script>
+
+<script type="text/template" id="userDetail">
+    <div class="container">
+        <div class="row" style="min-height: 50vh; background: #999999; margin-bottom: 4vh;">
+            <div class="col-md-2 text-center" style="height: 50vh; color: #fff; font-size: 1.5em; padding-top: 2em;">
+                <p>{{user.firstName}}</p>
+                <p>{{user.lastName}}</p>
+                <p>{{user.age}}</p>
+                <p>{{user.location}}</p>
+            </div>
+            <div class="col-md-10 text-center" style="background: #e5e5e5; height: 50vh; padding-top: 3em;">
+                <h2>{{user.firstName}}</h2>
+                <h2>{{user.lastName}}</h2>
+            </div>
+        </div>
+        <div class="row" style="min-height: 10vh;">
+            {{#each users}}
+            {{#ifCond this.id @root.user.id}}
+                <div class="col-md-2" style="border: 1px solid #000; background: #E6E6E6; height: 25vh; padding-top: 5em;">
+            {{else}}
+                <div class="col-md-2" style="background: #E6E6E6; height: 25vh; padding-top: 5em;">
+            {{/ifCond}}
+                <a href="#/{{this.id}}" class="text-center" style="color: #363636">
+                    <h3>{{this.firstName}}</h3>
+                    <h4>{{this.age}}</h4>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+        <div class="row" style="margin-top: 2vh;">
+            <div class="col-md-12 text-center">
+                <a href="#/{{user.prevUserId}}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+                <a href=""><span style="font-size: 1.5em; color: #363636;">{{user.id}}</span></a>
+                <a href="#/{{user.nextUserId}}"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+            </div>
+        </div>
+    </div>
+</script>
+</body>
+</html>
